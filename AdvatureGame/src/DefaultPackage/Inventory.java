@@ -1,4 +1,4 @@
-package Packege;
+package DefaultPackage;
 
 public class Inventory {
     private boolean water;

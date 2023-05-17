@@ -1,4 +1,4 @@
-import Packege.Game;
+import DefaultPackage.Game;
 
 public class Main {
     public static void main(String[] args) {
