@@ -6,8 +6,6 @@ public class Samurai extends Character {
     }
 
     public void restore(){
-        damage = 5;
         health = 21;
-        money = 15;
     }
 }

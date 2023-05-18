@@ -7,8 +7,6 @@ public class Knight extends Character{
     }
 
     public void restore(){
-        damage = 8;
         health = 24;
-        money = 5;
     }
 }

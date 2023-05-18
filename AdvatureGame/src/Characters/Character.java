@@ -1,6 +1,5 @@
 package Characters;
 
-import Gun.Gun;
 public abstract class Character {
     int id;
     int damage;
@@ -16,11 +15,6 @@ public abstract class Character {
         this.money = money;
     }
 
-    public Character(int damage, int health, int money) {
-        this.damage = damage;
-        this.health = health;
-        this.money = money;
-    }
 
     public int getDamage() {
         return damage;
@@ -51,18 +45,6 @@ public abstract class Character {
     }
 
     public abstract void restore();
-
-    public void damaged(int damage) {
-        if (health >= damage) {
-            health -= damage;
-        }
-    }
-
-    public void powered(Gun gun){
-        damage += gun.getDamage();
-        money -= gun.getMoney();
-    }
-
 
     @Override
     public String toString() {

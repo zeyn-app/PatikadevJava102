@@ -22,7 +22,7 @@ public class Game {
 
 
     public void selectLocation() {
-        //outerLoop:
+        outerLoop:
         while (!player.getInventory().isFood() || !player.getInventory().isWater() || !player.getInventory().isFirewood()) {
 
             print("\nLOCATION\n1-Battle Location\n2-Normal Location\n3-Exit");
@@ -81,7 +81,7 @@ public class Game {
                 print("\t=====================================");
                 print("\tLocation\t \tFeature\n" +
                         "\t1-Safe House\tRestore\n" +
-                        "\t2-Tool Store\tBuy Gun/Defence\n" +
+                        "\t2-Tool Store\tBuy Weapon/Defence\n" +
                         "\t3-Back");
                 print("\t=====================================");
                 innerLoop:
@@ -113,6 +113,9 @@ public class Game {
             }else if(chooseLocation.equals("3") || chooseLocation.equalsIgnoreCase("EXIT")){
                 break;
             }
+
+            if(player.getInventory().isWater()&& player.getInventory().isFood()&& player.getInventory().isFirewood())
+                break;
         }
     }
 

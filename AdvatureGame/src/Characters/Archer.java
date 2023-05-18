@@ -6,8 +6,6 @@ public class Archer extends Character {
     }
 
     public void restore(){
-        damage = 7;
         health = 18;
-        money = 20;
     }
 }
