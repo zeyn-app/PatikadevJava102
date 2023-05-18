@@ -12,6 +12,10 @@ public abstract class Location {
         this.player = player;
     }
 
+    public String getName(){
+        return name;
+    }
+
     @Override
     public String toString(){
         return "Location name: " + name + "\nProperty: " + feature;
