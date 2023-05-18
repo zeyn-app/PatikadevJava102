@@ -3,7 +3,7 @@ package DefaultPackage;
 public class Inventory {
     private boolean water;
     private boolean food;
-    private boolean firewoord;
+    private boolean firewood;
     private String weaponName;
     private String armorName;
     private int weaponDamage;
@@ -26,11 +26,11 @@ public class Inventory {
     }
 
     public boolean isFirewoord() {
-        return firewoord;
+        return firewood;
     }
 
-    public void setFirewoord(boolean firewoord) {
-        this.firewoord = firewoord;
+    public void setFirewoord(boolean firewood) {
+        this.firewood = firewood;
     }
 
     public String getWeaponName() {
@@ -63,5 +63,16 @@ public class Inventory {
 
     public void setArmoDefence(int armoDefence) {
         this.armoDefence = armoDefence;
+    }
+
+    public Inventory(){
+        this(false, false, false);
+
+
+    }
+    public Inventory(boolean water, boolean food, boolean firewood){
+        this.water = water;
+        this.food = food;
+        this.firewood = firewood;
     }
 }
