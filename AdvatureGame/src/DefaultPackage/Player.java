@@ -9,7 +9,8 @@ public class Player {
     Scanner scanner = new Scanner(System.in);
 
     private Character character;
-    private Inventory inventory;
+    private final Inventory inventory;
+    private String name;
 
     public Character getCharacter() {
         return character;
@@ -18,7 +19,12 @@ public class Player {
     public Inventory getInventory() {
         return inventory;
     }
+    public String getName(){return name;}
 
+    public Player(String name){
+        this.name = name;
+        inventory = new Inventory();
+    }
 
     public void selectChar() {
         String choice;

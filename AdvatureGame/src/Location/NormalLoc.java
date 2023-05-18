@@ -8,7 +8,7 @@ public abstract class NormalLoc extends Location {
 
 
 
-    public boolean onLocation(){return false;}
+    public boolean onLocation(){return false;} //?
 
     @Override
     public String toString(){
