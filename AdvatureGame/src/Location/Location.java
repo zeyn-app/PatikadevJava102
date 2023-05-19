@@ -1,7 +1,7 @@
 package Location;
 
 
-import DefaultPackage.Player;
+import Player.Player;
 
 public abstract class Location {
     protected String name;

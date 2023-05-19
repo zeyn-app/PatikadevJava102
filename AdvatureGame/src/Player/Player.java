@@ -1,4 +1,4 @@
-package DefaultPackage;
+package Player;
 
 import java.util.Scanner;
 
