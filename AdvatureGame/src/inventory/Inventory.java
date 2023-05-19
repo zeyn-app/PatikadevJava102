@@ -1,4 +1,4 @@
-package Inventory;
+package inventory;
 
 public class Inventory {
     private boolean water;

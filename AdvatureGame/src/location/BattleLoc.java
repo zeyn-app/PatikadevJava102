@@ -1,11 +1,11 @@
-package Location;
+package location;
 
-import Characters.Character;
-import Obstacles.*;
+import characters.Character;
+import obstacles.*;
 
 
 public abstract class BattleLoc extends Location {
-    private Obstacle obstacle;
+    private final Obstacle obstacle;
     private String booty;
     private int countOfObstacle;
 

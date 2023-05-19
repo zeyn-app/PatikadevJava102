@@ -1,4 +1,4 @@
-package Obstacles;
+package obstacles;
 
 public class Vampire extends Obstacle {
     public Vampire() {

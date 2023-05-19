@@ -1,6 +1,6 @@
-package Location;
+package location;
 
-import Obstacles.Zombie;
+import obstacles.Zombie;
 
 public class Cave extends BattleLoc {
     public Cave(){

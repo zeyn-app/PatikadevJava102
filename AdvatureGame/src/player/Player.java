@@ -1,17 +1,17 @@
-package Player;
+package player;
 
 import java.util.Scanner;
 
-import Characters.*;
-import Characters.Character;
-import Inventory.Inventory;
+import characters.*;
+import characters.Character;
+import inventory.Inventory;
 
 public class Player {
     Scanner scanner = new Scanner(System.in);
 
     private Character character;
     private final Inventory inventory;
-    private String name;
+    private final String name;
 
     public Character getCharacter() {
         return character;

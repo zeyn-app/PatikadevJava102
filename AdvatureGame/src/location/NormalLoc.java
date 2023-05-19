@@ -1,4 +1,4 @@
-package Location;
+package location;
 
 public abstract class NormalLoc extends Location {
     public NormalLoc(String name, String feature){

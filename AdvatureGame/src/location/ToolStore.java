@@ -1,10 +1,10 @@
-package Location;
+package location;
 
-import Armors.Armor;
-import Armors.Heavy;
-import Armors.Light;
-import Armors.Medium;
-import Weapons.*;
+import armors.Armor;
+import armors.Heavy;
+import armors.Light;
+import armors.Medium;
+import weapons.*;
 
 import java.util.Scanner;
 

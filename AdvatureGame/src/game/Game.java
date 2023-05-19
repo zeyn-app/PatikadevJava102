@@ -1,7 +1,7 @@
-package Game;
+package game;
 
-import Player.Player;
-import Location.*;
+import player.Player;
+import location.*;
 
 import java.util.Scanner;
 

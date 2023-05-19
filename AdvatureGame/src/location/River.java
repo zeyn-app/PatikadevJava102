@@ -1,6 +1,6 @@
-package Location;
+package location;
 
-import Obstacles.Bear;
+import obstacles.Bear;
 
 public class River extends BattleLoc {
 

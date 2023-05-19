@@ -1,20 +1,19 @@
-package Characters;
+package obstacles;
 
-public abstract class Character {
-    int id;
-    int damage;
-    int health;
-    int money;
-    String name;
+public abstract class Obstacle {
+    protected int id;
+    protected int damage;
+    protected int health;
+    protected int money;
+    protected String name;
 
-    public Character(int id, int damage, int health, int money, String name) {
+    public Obstacle(int id, int damage, int health, int money, String name) {
         this.id = id;
-        this.name = name;
         this.damage = damage;
         this.health = health;
         this.money = money;
+        this.name = name;
     }
-
 
     public int getDamage() {
         return damage;
@@ -32,29 +31,19 @@ public abstract class Character {
         return name;
     }
 
-    public void setDamage(int damage){
-        this.damage = damage;
-    }
-
-    public void setHealth(int health) {
+    public void setHealth(int health){
         this.health = health;
     }
 
-    public void setMoney(int money) {
-        this.money = money;
-    }
-
-    public abstract void restore();
 
     @Override
     public String toString() {
-        return "Character{" +
-                "id=" + id +
+        return "Obstacles.Obstacle{" +
+                ", id=" + id +
                 ", damage=" + damage +
                 ", health=" + health +
                 ", money=" + money +
                 ", name='" + name + '\'' +
                 '}';
     }
-
 }

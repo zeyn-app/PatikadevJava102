@@ -1,4 +1,4 @@
-package Characters;
+package characters;
 
 public class Samurai extends Character {
     public Samurai(){
