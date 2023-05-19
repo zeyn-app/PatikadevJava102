@@ -20,9 +20,9 @@ public class ToolStore extends NormalLoc {
     }
 
     public void menu() {
-        System.out.println("\t****** Welcome to the Tool Store ******\n\tThe items on the Tool Store: \n\t1-Armors\n\t2-Weapons");
+        System.out.println("\t****** Welcome to the Tool Store ******\n\tThe items on the Tool Store: \n\t1-Armors --> get defence\n\t2-Weapons --> get damage\n\t3-Exit");
         Scanner scanner = new Scanner(System.in);
-        System.out.print("\tPlease enter the name/id of item: ");
+        System.out.print("Please choose a item: ");
         String choice = scanner.next();
 
         if (choice.equalsIgnoreCase("armors") || choice.equalsIgnoreCase("1")) {
@@ -38,7 +38,7 @@ public class ToolStore extends NormalLoc {
                 case "1", "light" -> {
                     armor = new Light();
                     Light light = (Light) armor;
-                    System.out.println("Buy or Leave");
+                    System.out.print("Buy or Leave: ");
                     choice = scanner.next();
                     if (choice.equalsIgnoreCase("buy")) {
                         buy(light);
@@ -48,7 +48,7 @@ public class ToolStore extends NormalLoc {
                 case "2", "medium" -> {
                     armor = new Medium();
                     Medium medium = (Medium) armor;
-                    System.out.println("\tBuy or Leave");
+                    System.out.print("\tBuy or Leave: ");
                     choice = scanner.next();
                     if (choice.equalsIgnoreCase("buy")) {
                         buy(medium);
@@ -58,7 +58,7 @@ public class ToolStore extends NormalLoc {
                 case "3", "heavy" -> {
                     armor = new Heavy();
                     Heavy heavy = (Heavy) armor;
-                    System.out.println("\tBuy or Leave");
+                    System.out.print("\tBuy or Leave: ");
                     choice = scanner.next();
                     if (choice.equalsIgnoreCase("buy")) {
                         buy(heavy);
@@ -66,15 +66,12 @@ public class ToolStore extends NormalLoc {
                     }
                 }
                 case "4", "back" -> {
-                    // ?
                 }
                 default -> {
                     System.out.println("Yanlış seçim yapıldı, sanırım exception fırlatmam gerekiyor");
                     // Throw exception
                 }
             }
-
-
         } else if (choice.equalsIgnoreCase("weapons") || choice.equalsIgnoreCase("2")) {
             Weapon weapon;
             System.out.println("\n\tWeapons\t \tID\tDamage\tMoney\n" +
@@ -88,7 +85,7 @@ public class ToolStore extends NormalLoc {
                 case "1", "gun" -> {
                     weapon = new Gun();
                     Gun gun = (Gun) weapon;
-                    System.out.println("\tBuy or Leave");
+                    System.out.print("\tBuy or Leave: ");
                     choice = scanner.next();
                     if (choice.equalsIgnoreCase("buy")) {
                         buy(gun);
@@ -98,7 +95,7 @@ public class ToolStore extends NormalLoc {
                 case "2", "sword" -> {
                     weapon = new Sword();
                     Sword sword = (Sword) weapon;
-                    System.out.println("\tBuy or Leave");
+                    System.out.print("\tBuy or Leave: ");
                     choice = scanner.next();
                     if (choice.equalsIgnoreCase("buy")) {
                         buy(sword);
@@ -108,7 +105,7 @@ public class ToolStore extends NormalLoc {
                 case "3", "rifle" -> {
                     weapon = new Rifle();
                     Rifle rifle = (Rifle) weapon;
-                    System.out.println("\tBuy or Leave");
+                    System.out.print("\tBuy or Leave: ");
                     choice = scanner.next();
                     if (choice.equalsIgnoreCase("buy")) {
                         buy(rifle);
@@ -116,7 +113,6 @@ public class ToolStore extends NormalLoc {
                     }
                 }
                 case "4", "back" -> {
-                    // ?
                 }
                 default -> {
                     System.out.println("Yanlış seçim yapıldı, sanırım exception fırlatmam gerekiyor");
@@ -126,12 +122,11 @@ public class ToolStore extends NormalLoc {
         } else {
             System.out.println("Yanlış seçim yaptınız"); // Exception fırlatılabilir
         }
+        // }
     }
 
     public void buy(Armor armor) {
         if (armor.getMoney() <= player.getCharacter().getMoney()) {
-            // moneyi düşür
-            // defence i health e kat
             int money = player.getCharacter().getMoney();
             int health = player.getCharacter().getHealth();
             player.getCharacter().setMoney(money - armor.getMoney());

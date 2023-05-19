@@ -22,7 +22,6 @@ public class Game {
 
 
     public void selectLocation() {
-        outerLoop:
         while (!player.getInventory().isFood() || !player.getInventory().isWater() || !player.getInventory().isFirewood()) {
 
             print("\nLOCATION\n1-Battle Location\n2-Normal Location\n3-Exit");
@@ -39,7 +38,7 @@ public class Game {
                         "\t4-Back");
                 print("\t=====================================");
                 innerLoop:
-                while (true) {
+                while (!player.getInventory().isFood() || !player.getInventory().isWater() || !player.getInventory().isFirewood()) {
                     boolean hasBooty;
                     print("Please enter the name of location: ");
                     chooseLocation = scanner.next();
@@ -100,6 +99,7 @@ public class Game {
                             location = new ToolStore();
                             location.setPlayer(player);
                             ((ToolStore) location).menu();
+                            break innerLoop;
                         }
                         case "3", "back", "Back", "BACK" -> {
                             break innerLoop;
@@ -114,8 +114,8 @@ public class Game {
                 break;
             }
 
-            if(player.getInventory().isWater()&& player.getInventory().isFood()&& player.getInventory().isFirewood())
-                break;
+            //if(player.getInventory().isWater()&& player.getInventory().isFood()&& player.getInventory().isFirewood())
+                //break;
         }
     }
 

@@ -18,6 +18,4 @@ public abstract class Weapon {
     public int getMoney() {
         return money;
     }
-
-    // pistols, swords, rifles
 }
