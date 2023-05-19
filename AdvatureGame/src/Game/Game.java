@@ -1,5 +1,6 @@
-package DefaultPackage;
+package Game;
 
+import DefaultPackage.Player;
 import Location.*;
 
 import java.util.Scanner;
