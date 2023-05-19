@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import Characters.*;
 import Characters.Character;
+import Inventory.Inventory;
 
 public class Player {
     Scanner scanner = new Scanner(System.in);
