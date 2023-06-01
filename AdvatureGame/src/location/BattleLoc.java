@@ -1,17 +1,21 @@
 package location;
 
-import characters.Character;
 import obstacles.*;
+
+import java.util.Scanner;
 
 
 public abstract class BattleLoc extends Location {
     private final Obstacle obstacle;
     private String booty;
-    private int countOfObstacle;
+    private final int countOfObstacle;
+    Scanner scanner = new Scanner(System.in);
 
     public BattleLoc(Obstacle obstacle) {
         this.obstacle = obstacle;
         countOfObstacle = generateObstacleCount();
+        obstacle.setHealth(obstacle.getHealth() * countOfObstacle);
+        obstacle.setMoney(obstacle.getMoney() * countOfObstacle);
     }
 
     public BattleLoc(String name, String feature, Obstacle obstacle, String booty) {
@@ -26,62 +30,65 @@ public abstract class BattleLoc extends Location {
         return booty;
     }
 
-    public Obstacle getObstacle() {
-        return obstacle;
-    }
+    public boolean combat() {
 
-    public int getCountOfOstacle() {
-        return countOfObstacle;
-    }
+        int damage, round;
 
-    public boolean onLocation() {
-        return true;
-    }
+        int whoStart = (int) (Math.random() * 100) + 1;
+        System.out.println("who start first: " + whoStart);
+        // obstacle start
+        round = whoStart < 50 ? 0 : 1;
 
-    public boolean canCombat() {
-        Character character = player.getCharacter();
-        int damage, round = 1, health, money;
-        money = obstacle.getMoney() * countOfObstacle;
-        health = obstacle.getHealth() * countOfObstacle;
-        obstacle.setHealth(health);
-
-        int gainProbabilityOfPlayer, gainProbabilityOfObstacle;
-        gainProbabilityOfPlayer = character.getHealth() / obstacle.getDamage();
-        gainProbabilityOfObstacle = obstacle.getHealth() / character.getDamage();
-
-        if (gainProbabilityOfPlayer < gainProbabilityOfObstacle) {
-            System.out.println("You dont have enough power to combat, plase come back to get power or restore your health");
-            return false;
-        }
-
-        System.out.println("\tThe health of " + player.getName() + " --> " + character.getHealth());
-        System.out.println("\tThe health of " + obstacle.getName() + " --> " + obstacle.getHealth());
-        while (obstacle.getHealth() > 0) {
-
+        while (true) {
             System.out.println();
             if (round % 2 == 1) {
                 System.out.println("\t*** " + player.getName() + " shoot " + obstacle.getName() + " ***");
-                damage = (obstacle.getHealth() - character.getDamage());
+                damage = (obstacle.getHealth() - player.getCharacter().getDamage());
                 damage = Math.max(0, damage);
                 obstacle.setHealth(damage);
             } else {
                 System.out.println("\t*** " + obstacle.getName() + " shoot " + player.getName() + " ***");
-                damage = character.getHealth() - obstacle.getDamage();
-                character.setHealth(damage);
+                damage = player.getCharacter().getHealth() - obstacle.getDamage();
+                player.getCharacter().setHealth(damage);
             }
-            System.out.println("\tThe health of " + player.getName() + " --> " + character.getHealth());
-            System.out.println("\tThe health of " + obstacle.getName() + " --> " + obstacle.getHealth());
+
+            getInfo();
             round++;
+
+            if (player.getCharacter().getHealth() <= 0) {
+                return false;
+            }
+
+            if (obstacle.getHealth() <= 0) {
+                break;
+            }
         }
         System.out.println("\n\t**************************");
-        System.out.println("\t" + obstacle.getName() + " is dead. You earned " + money + " money");
-        character.setMoney(character.getMoney() + money);
-        System.out.println("\tYour current money: " + character.getMoney());
+        System.out.println("\t" + obstacle.getName() + " is dead. You earned " + obstacle.getMoney() + " money");
+        player.getCharacter().setMoney(player.getCharacter().getMoney() + obstacle.getMoney());
+        System.out.println("\tYour current money: " + player.getCharacter().getMoney());
         return true;
     }
 
 
     private int generateObstacleCount() {
         return (int) (Math.random() * 3 + 1);
+    }
+
+    private void getInfo() {
+        System.out.println("\tThe health of " + player.getName() + " --> " + (Math.max(player.getCharacter().getHealth(), 0)));
+        System.out.println("\tThe health of " + obstacle.getName() + " --> " + (Math.max(obstacle.getHealth(), 0)));
+    }
+
+    public boolean fight() {
+        System.out.println("\t\nThere are " + countOfObstacle + " " + obstacle.getName() + "(s)");
+        getInfo();
+        System.out.print("\tDo you want to fight? (yes / no): ");
+        String choice = scanner.next();
+
+        if (choice.startsWith("y") || choice.startsWith("Y")) {
+            return true;
+        }
+        return false;
     }
 }
