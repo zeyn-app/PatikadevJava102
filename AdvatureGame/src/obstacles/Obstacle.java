@@ -31,10 +31,13 @@ public abstract class Obstacle {
         return name;
     }
 
-    public void setHealth(int health){
+    public void setHealth(int health) {
         this.health = health;
     }
 
+    public void setMoney(int money) {
+        this.money = money;
+    }
 
     @Override
     public String toString() {

@@ -9,6 +9,7 @@ public class Game {
     Scanner scanner = new Scanner(System.in);
     private Location location;
     private Player player;
+    private boolean isAlive = true;
 
     public void start() {
         print("Welcome! Game is starting...");
@@ -19,11 +20,14 @@ public class Game {
         player.selectChar();
         System.out.println(player);
         selectLocation();
+
+        if (isAlive) System.out.println("***********  Winner  ***********");
+        else System.out.println("\t...GAME OVER!!!");
     }
 
 
     public void selectLocation() {
-        while (!player.getInventory().isFood() || !player.getInventory().isWater() || !player.getInventory().isFirewood()) {
+        while ((!player.getInventory().isFood() || !player.getInventory().isWater() || !player.getInventory().isFirewood()) && isAlive) {
 
             print("\nLOCATION\n1-Battle Location\n2-Normal Location\n3-Exit");
             String chooseLocation;
@@ -39,7 +43,7 @@ public class Game {
                         "\t4-Back");
                 print("\t=====================================");
                 innerLoop:
-                while (!player.getInventory().isFood() || !player.getInventory().isWater() || !player.getInventory().isFirewood()) {
+                while ((!player.getInventory().isFood() || !player.getInventory().isWater() || !player.getInventory().isFirewood()) && isAlive) {
                     boolean hasBooty;
                     print("Please enter the name of location: ");
                     chooseLocation = scanner.next();
@@ -48,7 +52,7 @@ public class Game {
                             location = new Cave();
                             Cave cave = (Cave) location;
                             hasBooty = player.getInventory().isFood();
-                            if (canVisit(cave, hasBooty))
+                            if (visit(cave, hasBooty))
                                 player.getInventory().setFood(true);
                         }
 
@@ -56,24 +60,22 @@ public class Game {
                             location = new Forest();
                             Forest forest = (Forest) location;
                             hasBooty = player.getInventory().isFirewood();
-                            if (canVisit(forest, hasBooty))
+                            if (visit(forest, hasBooty))
                                 player.getInventory().setFirewood(true);
                         }
                         case "3", "river", "River", "RIVER" -> {
                             location = new River();
                             River river = (River) location;
                             hasBooty = player.getInventory().isWater();
-                            if (canVisit(river, hasBooty))
+                            if (visit(river, hasBooty))
                                 player.getInventory().setWater(true);
                         }
                         case "4", "back", "Back", "BACK" -> {
                             break innerLoop;
                         }
-                        default -> {
+                        default ->
                             System.out.println("Yanlış seçim yapıldı, sanırım exception fırlatmam gerekiyor");
                             // Throw exception
-                        }
-
                     }
                 }
 
@@ -94,6 +96,7 @@ public class Game {
                             location.setPlayer(player);
                             print("Restoring...");
                             player.getCharacter().restore();
+                            System.out.println(player);
                             break innerLoop;
                         }
                         case "2", "Tool Store" -> {
@@ -105,18 +108,14 @@ public class Game {
                         case "3", "back", "Back", "BACK" -> {
                             break innerLoop;
                         }
-                        default -> {
+                        default ->
                             System.out.println("Yanlış seçim yapıldı, sanırım exception fırlatmam gerekiyor");
                             // Throw exception
-                        }
                     }
                 }
-            }else if(chooseLocation.equals("3") || chooseLocation.equalsIgnoreCase("EXIT")){
+            } else if (chooseLocation.equals("3") || chooseLocation.equalsIgnoreCase("EXIT")) {
                 break;
             }
-
-            //if(player.getInventory().isWater()&& player.getInventory().isFood()&& player.getInventory().isFirewood())
-                //break;
         }
     }
 
@@ -124,20 +123,15 @@ public class Game {
         System.out.print("\n" + str);
     }
 
-    public boolean canVisit(BattleLoc location, boolean hasBooty) {
-        boolean result = false;
+    public boolean visit(BattleLoc location, boolean hasBooty) {
         if (!hasBooty) {
             location.setPlayer(player);
-            print("There are " + location.getCountOfOstacle() + " " + location.getObstacle().getName() + "(s)");
-            print("Do you want to fight? (yes / no): ");
-            String choice = scanner.next();
-            if (choice.startsWith("y") || choice.startsWith("Y")) {
-                result = location.canCombat();
+            if (location.fight()) {
+                isAlive = location.combat();
+                return true;
             }
-        } else {
+        } else
             System.out.println("You have " + location.getBooty() + ", you can not visit " + location.getName());
-            return false;
-        }
-        return result;
+        return false;
     }
 }

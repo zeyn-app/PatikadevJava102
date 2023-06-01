@@ -9,18 +9,14 @@ import weapons.*;
 import java.util.Scanner;
 
 public class ToolStore extends NormalLoc {
+    Scanner scanner = new Scanner(System.in);
 
     public ToolStore() {
         super("Tool Store", "Get supported items");
     }
 
-    @Override
-    public boolean onLocation() {
-        return super.onLocation();
-    }
-
     public void menu() {
-        System.out.println("\t****** Welcome to the Tool Store ******\n\tThe items on the Tool Store: \n\t1-Armors --> get defence\n\t2-Weapons --> get damage\n\t3-Exit");
+        System.out.println("\n\t****** Welcome to the Tool Store ******\n\t\tThe items on the Tool Store: \n\t1-Armors --> get defence\n\t2-Weapons --> get damage\n\t3-Exit");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please choose a item: ");
         String choice = scanner.next();
@@ -38,39 +34,24 @@ public class ToolStore extends NormalLoc {
                 case "1", "light" -> {
                     armor = new Light();
                     Light light = (Light) armor;
-                    System.out.print("Buy or Leave: ");
-                    choice = scanner.next();
-                    if (choice.equalsIgnoreCase("buy")) {
-                        buy(light);
-                        System.out.println(player);
-                    }
+                    buy(light);
                 }
                 case "2", "medium" -> {
                     armor = new Medium();
                     Medium medium = (Medium) armor;
-                    System.out.print("\tBuy or Leave: ");
-                    choice = scanner.next();
-                    if (choice.equalsIgnoreCase("buy")) {
-                        buy(medium);
-                        System.out.println(player);
-                    }
+                    buy(medium);
                 }
                 case "3", "heavy" -> {
                     armor = new Heavy();
                     Heavy heavy = (Heavy) armor;
-                    System.out.print("\tBuy or Leave: ");
-                    choice = scanner.next();
-                    if (choice.equalsIgnoreCase("buy")) {
-                        buy(heavy);
-                        System.out.println(player);
-                    }
+                    buy(heavy);
                 }
                 case "4", "back" -> {
                 }
-                default -> {
+                default ->
                     System.out.println("Yanlış seçim yapıldı, sanırım exception fırlatmam gerekiyor");
                     // Throw exception
-                }
+
             }
         } else if (choice.equalsIgnoreCase("weapons") || choice.equalsIgnoreCase("2")) {
             Weapon weapon;
@@ -85,65 +66,63 @@ public class ToolStore extends NormalLoc {
                 case "1", "gun" -> {
                     weapon = new Gun();
                     Gun gun = (Gun) weapon;
-                    System.out.print("\tBuy or Leave: ");
-                    choice = scanner.next();
-                    if (choice.equalsIgnoreCase("buy")) {
-                        buy(gun);
-                        System.out.println(player);
-                    }
+                    buy(gun);
                 }
                 case "2", "sword" -> {
                     weapon = new Sword();
                     Sword sword = (Sword) weapon;
-                    System.out.print("\tBuy or Leave: ");
-                    choice = scanner.next();
-                    if (choice.equalsIgnoreCase("buy")) {
-                        buy(sword);
-                        System.out.println(player);
-                    }
+                    buy(sword);
                 }
                 case "3", "rifle" -> {
                     weapon = new Rifle();
                     Rifle rifle = (Rifle) weapon;
-                    System.out.print("\tBuy or Leave: ");
-                    choice = scanner.next();
-                    if (choice.equalsIgnoreCase("buy")) {
-                        buy(rifle);
-                        System.out.println(player);
-                    }
+                    buy(rifle);
                 }
                 case "4", "back" -> {
                 }
-                default -> {
+                default ->
                     System.out.println("Yanlış seçim yapıldı, sanırım exception fırlatmam gerekiyor");
                     // Throw exception
-                }
+
             }
         } else {
             System.out.println("Yanlış seçim yaptınız"); // Exception fırlatılabilir
         }
-        // }
     }
 
     public void buy(Armor armor) {
-        if (armor.getMoney() <= player.getCharacter().getMoney()) {
-            int money = player.getCharacter().getMoney();
-            int health = player.getCharacter().getHealth();
-            player.getCharacter().setMoney(money - armor.getMoney());
-            player.getCharacter().setHealth(health + armor.getDefence());
-        } else {
-            System.out.println("You don't have enough money");
+        System.out.println("\n\tYour money: " + player.getCharacter().getMoney());
+        System.out.print("\tBuy or Leave: ");
+        String choice = scanner.next();
+        if (choice.equalsIgnoreCase("buy")) {
+            if (armor.getMoney() <= player.getCharacter().getMoney()) {
+                int money = player.getCharacter().getMoney();
+                int health = player.getCharacter().getHealth();
+                player.getCharacter().setMoney(money - armor.getMoney());
+                player.getCharacter().setHealth(health + armor.getDefence());
+                System.out.print("\tShopping done successfully.");
+                System.out.println("\n\tYour money: " + player.getCharacter().getMoney());
+            } else {
+                System.out.println("You don't have enough money");
+            }
         }
     }
 
     public void buy(Weapon weapon) {
-        if (weapon.getMoney() <= player.getCharacter().getMoney()) {
-            int money = player.getCharacter().getMoney();
-            int damage = player.getCharacter().getDamage();
-            player.getCharacter().setMoney(money - weapon.getMoney());
-            player.getCharacter().setDamage(damage + weapon.getDamage());
-        } else {
-            System.out.println("You don't have enough money");
+        System.out.println("\n\tYour money: " + player.getCharacter().getMoney());
+        System.out.print("\tBuy or Leave: ");
+        String choice = scanner.next();
+        if (choice.equalsIgnoreCase("buy")) {
+            if (weapon.getMoney() <= player.getCharacter().getMoney()) {
+                int money = player.getCharacter().getMoney();
+                int health = player.getCharacter().getHealth();
+                player.getCharacter().setMoney(money - weapon.getMoney());
+                player.getCharacter().setHealth(health + weapon.getDamage());
+                System.out.print("\tShopping done successfully.");
+                System.out.println("\n\tYour money: " + player.getCharacter().getMoney());
+            } else {
+                System.out.println("You don't have enough money");
+            }
         }
     }
 }

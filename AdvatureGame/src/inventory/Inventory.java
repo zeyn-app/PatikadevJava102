@@ -24,7 +24,8 @@ public class Inventory {
     public void setWater(boolean water) {
         this.water = water;
     }
-    public void setFirewood(boolean firewood){
+
+    public void setFirewood(boolean firewood) {
         this.firewood = firewood;
     }
 
@@ -34,8 +35,6 @@ public class Inventory {
 
     public Inventory() {
         this(false, false, false);
-
-
     }
 
     public Inventory(boolean water, boolean food, boolean firewood) {

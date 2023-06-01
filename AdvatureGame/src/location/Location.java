@@ -7,11 +7,10 @@ public abstract class Location {
     protected String name;
     protected String feature;
     Player player;
-    boolean onLocation;
+
     public void setPlayer(Player player){
         this.player = player;
     }
-
     public String getName(){
         return name;
     }
