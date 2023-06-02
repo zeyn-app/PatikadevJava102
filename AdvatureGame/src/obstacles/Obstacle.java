@@ -5,6 +5,7 @@ public abstract class Obstacle {
     protected int damage;
     protected int health;
     protected int money;
+
     protected String name;
 
     public Obstacle(int id, int damage, int health, int money, String name) {

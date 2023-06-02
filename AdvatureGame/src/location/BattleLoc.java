@@ -35,7 +35,7 @@ public abstract class BattleLoc extends Location {
         int damage, round;
 
         int whoStart = (int) (Math.random() * 100) + 1;
-        System.out.println("who start first: " + whoStart);
+        // System.out.println("who start first: " + whoStart);
         // obstacle start
         round = whoStart < 50 ? 0 : 1;
 
@@ -64,9 +64,10 @@ public abstract class BattleLoc extends Location {
             }
         }
         System.out.println("\n\t**************************");
-        System.out.println("\t" + obstacle.getName() + " is dead. You earned " + obstacle.getMoney() + " money");
+        System.out.println("\t" + obstacle.getName() + "(s) dead.");
         player.getCharacter().setMoney(player.getCharacter().getMoney() + obstacle.getMoney());
-        System.out.println("\tYour current money: " + player.getCharacter().getMoney());
+        //System.out.println("\tYour current money: " + player.getCharacter().getMoney());
+        System.out.println("\t" + player.getCharacter());
         return true;
     }
 
@@ -81,7 +82,7 @@ public abstract class BattleLoc extends Location {
     }
 
     public boolean fight() {
-        System.out.println("\t\nThere are " + countOfObstacle + " " + obstacle.getName() + "(s)");
+        System.out.println("\tThere are " + countOfObstacle + " " + obstacle.getName() + "(s)");
         getInfo();
         System.out.print("\tDo you want to fight? (yes / no): ");
         String choice = scanner.next();

@@ -27,7 +27,7 @@ public class Game {
 
 
     public void selectLocation() {
-        while ((!player.getInventory().isFood() || !player.getInventory().isWater() || !player.getInventory().isFirewood()) && isAlive) {
+        while ((!player.getInventory().isFood() || !player.getInventory().isWater() || !player.getInventory().isFirewood() || !player.getInventory().isJoker()) && isAlive) {
 
             print("\nLOCATION\n1-Battle Location\n2-Normal Location\n3-Exit");
             String chooseLocation;
@@ -40,10 +40,11 @@ public class Game {
                         "\t1-Cave\t\tZombie\t\tFood\n" +
                         "\t2-Forest\tVampire\t\tFirewood\n" +
                         "\t3-River\t\tBear\t\tWater\n" +
-                        "\t4-Back");
+                        "\t4-Mine\t\tSnake\t\tJoker\n" +
+                        "\t5-Back");
                 print("\t=====================================");
                 innerLoop:
-                while ((!player.getInventory().isFood() || !player.getInventory().isWater() || !player.getInventory().isFirewood()) && isAlive) {
+                while ((!player.getInventory().isFood() || !player.getInventory().isWater() || !player.getInventory().isFirewood() || !player.getInventory().isJoker()) && isAlive) {
                     boolean hasBooty;
                     print("Please enter the name of location: ");
                     chooseLocation = scanner.next();
@@ -70,12 +71,20 @@ public class Game {
                             if (visit(river, hasBooty))
                                 player.getInventory().setWater(true);
                         }
-                        case "4", "back", "Back", "BACK" -> {
+                        case "4", "mine", "Mine", "MINE" -> {
+                            location = new Mine();
+                            Mine mine = (Mine) location;
+                            hasBooty = player.getInventory().isJoker();
+                            if (visit(mine, hasBooty)) {
+                                mine.winJoker(player);
+                                player.getInventory().setJoker(true);
+                            }
+                        }
+                        case "5", "back", "Back", "BACK" -> {
                             break innerLoop;
                         }
-                        default ->
-                            System.out.println("Yanlış seçim yapıldı, sanırım exception fırlatmam gerekiyor");
-                            // Throw exception
+                        default -> System.out.println("Yanlış seçim yapıldı, sanırım exception fırlatmam gerekiyor");
+                        // Throw exception
                     }
                 }
 
@@ -108,9 +117,8 @@ public class Game {
                         case "3", "back", "Back", "BACK" -> {
                             break innerLoop;
                         }
-                        default ->
-                            System.out.println("Yanlış seçim yapıldı, sanırım exception fırlatmam gerekiyor");
-                            // Throw exception
+                        default -> System.out.println("Yanlış seçim yapıldı, sanırım exception fırlatmam gerekiyor");
+                        // Throw exception
                     }
                 }
             } else if (chooseLocation.equals("3") || chooseLocation.equalsIgnoreCase("EXIT")) {

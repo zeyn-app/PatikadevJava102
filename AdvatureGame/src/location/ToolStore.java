@@ -115,9 +115,9 @@ public class ToolStore extends NormalLoc {
         if (choice.equalsIgnoreCase("buy")) {
             if (weapon.getMoney() <= player.getCharacter().getMoney()) {
                 int money = player.getCharacter().getMoney();
-                int health = player.getCharacter().getHealth();
+                int damage = player.getCharacter().getDamage();
                 player.getCharacter().setMoney(money - weapon.getMoney());
-                player.getCharacter().setHealth(health + weapon.getDamage());
+                player.getCharacter().setDamage(damage + weapon.getDamage());
                 System.out.print("\tShopping done successfully.");
                 System.out.println("\n\tYour money: " + player.getCharacter().getMoney());
             } else {
