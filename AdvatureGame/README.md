@@ -7,7 +7,7 @@ YAPILACAKLAR
     Enter your name: Zeynep
     The characters and their properties are shown below.
     
-    Character	 	ID	Damage	Health	Money
+    Character	 	ID	         Damage	        Health	   Money
     1-Samurai		 1		 5		21	   15
     2-Archer		 2		 7		18	   20
     3-Knight		 3		 8		24	    5
@@ -109,7 +109,7 @@ YAPILACAKLAR
     Please choose your location where you want to go: 2
 
 	=====================================
-	Location	 	Feature
+	Location	Feature
 	1-Safe House	Restore
 	2-Tool Store	Buy Weapon/Defence
 	3-Back
@@ -123,7 +123,7 @@ YAPILACAKLAR
 	3-Exit
     Please choose a item: 1
 
-	Armors	 	ID	Defence 	Money
+	Armors	 	ID	         Defence 	Money
 	1-Light		 1		 1		15
 	2-Medium	 2		 3		25
 	3-Heavy		 3		 5		40
@@ -155,7 +155,7 @@ YAPILACAKLAR
 	3-Exit
     Please choose a item: 2
 
-	Weapons	 	ID	Damage	Money
+	Weapons	 	ID		Damage		Money
 	1-Gun		 1		 2		25
 	2-Sword		 2		 3		35
 	3-Rifle		 3		 7		45
