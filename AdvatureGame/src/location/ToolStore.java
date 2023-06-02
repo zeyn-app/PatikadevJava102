@@ -8,7 +8,7 @@ import weapons.*;
 
 import java.util.Scanner;
 
-public class ToolStore extends NormalLoc {
+public class ToolStore extends NormalLocation {
     Scanner scanner = new Scanner(System.in);
 
     public ToolStore() {
@@ -16,7 +16,11 @@ public class ToolStore extends NormalLoc {
     }
 
     public void menu() {
-        System.out.println("\n\t****** Welcome to the Tool Store ******\n\t\tThe items on the Tool Store: \n\t1-Armors --> get defence\n\t2-Weapons --> get damage\n\t3-Exit");
+        System.out.println("\n\t****** Welcome to the Tool Store ******" +
+                "\n\t\tThe items on the Tool Store: " +
+                "\n\t1-Armors --> get defence" +
+                "\n\t2-Weapons --> get damage" +
+                "\n\t3-Exit");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please choose a item: ");
         String choice = scanner.next();
@@ -91,13 +95,16 @@ public class ToolStore extends NormalLoc {
     }
 
     public void buy(Armor armor) {
+        int money, health;
         System.out.println("\n\tYour money: " + player.getCharacter().getMoney());
         System.out.print("\tBuy or Leave: ");
+
         String choice = scanner.next();
         if (choice.equalsIgnoreCase("buy")) {
             if (armor.getMoney() <= player.getCharacter().getMoney()) {
-                int money = player.getCharacter().getMoney();
-                int health = player.getCharacter().getHealth();
+                money = player.getCharacter().getMoney();
+                health = player.getCharacter().getHealth();
+
                 player.getCharacter().setMoney(money - armor.getMoney());
                 player.getCharacter().setHealth(health + armor.getDefence());
                 System.out.print("\tShopping done successfully.");
@@ -109,13 +116,16 @@ public class ToolStore extends NormalLoc {
     }
 
     public void buy(Weapon weapon) {
+        int money, damage;
         System.out.println("\n\tYour money: " + player.getCharacter().getMoney());
         System.out.print("\tBuy or Leave: ");
+
         String choice = scanner.next();
         if (choice.equalsIgnoreCase("buy")) {
             if (weapon.getMoney() <= player.getCharacter().getMoney()) {
-                int money = player.getCharacter().getMoney();
-                int damage = player.getCharacter().getDamage();
+                money = player.getCharacter().getMoney();
+                damage = player.getCharacter().getDamage();
+
                 player.getCharacter().setMoney(money - weapon.getMoney());
                 player.getCharacter().setDamage(damage + weapon.getDamage());
                 System.out.print("\tShopping done successfully.");

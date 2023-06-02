@@ -1,8 +1,8 @@
 package location;
 
-public class SafeHouse extends NormalLoc {
+public class SafeHouse extends NormalLocation {
 
-    public SafeHouse(){
+    public SafeHouse() {
         super("Safe House", "Restore");
     }
 }

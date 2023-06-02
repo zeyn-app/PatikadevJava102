@@ -18,7 +18,6 @@ public class Game {
         player = new Player(name);
 
         player.selectChar();
-        System.out.println(player);
         selectLocation();
 
         if (isAlive) System.out.println("***********  Winner  ***********");
@@ -75,8 +74,8 @@ public class Game {
                             location = new Mine();
                             Mine mine = (Mine) location;
                             hasBooty = player.getInventory().isJoker();
-                            if (visit(mine, hasBooty)) {
-                                mine.winJoker(player);
+                            if (visit(mine, hasBooty)&isAlive) {
+                                mine.winJoker();
                                 player.getInventory().setJoker(true);
                             }
                         }
@@ -131,7 +130,7 @@ public class Game {
         System.out.print("\n" + str);
     }
 
-    public boolean visit(BattleLoc location, boolean hasBooty) {
+    public boolean visit(BattleLocation location, boolean hasBooty) {
         if (!hasBooty) {
             location.setPlayer(player);
             if (location.fight()) {

@@ -43,6 +43,7 @@ public class Player {
             case "3" -> character = new Knight();
             default -> character = null; // Buraya exceptionları ekle
         }
+        System.out.println(character);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package location;
 
-public abstract class NormalLoc extends Location {
-    public NormalLoc(String name, String feature){
+public abstract class NormalLocation extends Location {
+    public NormalLocation(String name, String feature){
         this.name = name;
         this.feature = feature;
     }
