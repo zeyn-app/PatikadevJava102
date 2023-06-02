@@ -2,7 +2,7 @@
 YAPILACAKLAR
 * Exception' lar eklenecek
 
-
+```sh
     Welcome! Game is starting...
     Enter your name: Zeynep
     The characters and their properties are shown below.
@@ -316,4 +316,5 @@ YAPILACAKLAR
 	*** Bear shoot Zeynep ***
 	The health of Zeynep --> 0
 	The health of Bear --> 8
+	
 	...GAME OVER!!!
