@@ -139,9 +139,9 @@ public class MyList<T> {
         if (start >= 0 & finish < index) {
             //throw new IndexOutOfBoundsException("")
             int length = finish - start;
-            MyList newList = new MyList(length);
+            MyList<T> newList = new MyList(length);
             for (int i = 0; i < length; i++) {
-                newList.myList[i] = this.getMyList()[start + i];
+                newList.add(getMyList()[start + i]);
             }
             return newList;
         }
@@ -153,5 +153,9 @@ public class MyList<T> {
             if(myList[i]==data) return true;
         }
         return false;
+    }
+
+    public Object[] toArray() {
+        return myList;
     }
 }

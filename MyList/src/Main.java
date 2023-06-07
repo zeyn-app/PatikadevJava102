@@ -51,8 +51,8 @@ public class Main {
         System.out.println("Indeks : " + liste.lastIndexOf(20));
 
         // Listeyi Object[] dizisi olarak geri verir.
-       // Object[] dizi = liste.toArray();
-        //System.out.println("Object dizisinin ilk elemanı :" + dizi[0]);
+        Object[] dizi = liste.toArray();
+        System.out.println("Object dizisinin ilk elemanı :" + dizi[0]);
 
         // Liste veri türünde alt bir liste oluşturdu
         MyList<Integer> altListem = liste.subList(0, 3);
@@ -64,7 +64,7 @@ public class Main {
 
         // Listeyi tamamen boşaltır ve varsayılan boyutuna çevirir
         liste.clear();
-        System.out.println(liste);
+        System.out.println("Liste: " + liste);
 
     }
 }
